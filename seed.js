@@ -10,12 +10,12 @@ const seeding = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("✅ MongoDB connected");
+    console.log("MongoDB connected");
 
     // Check if data already exists
     const usercount = await User.countDocuments();
     if (usercount > 0) {
-      console.log("⚠️  Data already present. Seeding skipped.");
+      console.log("Data already present. Seeding skipped.");
       return;
     }
 
@@ -33,17 +33,17 @@ const seeding = async () => {
     }));
 
     // Optional: Log one user to confirm the structure
-    console.log("👤 Sample user to insert:", userToSeed[0]);
+    console.log(" Sample user to insert:", userToSeed[0]);
 
     // Insert into MongoDB
     await User.insertMany(userToSeed);
-    console.log("✅ Database seeded successfully with 50 users");
+    console.log("Database seeded successfully with 50 users");
   } catch (error) {
-    console.error("❌ An error occurred during seeding:", error.message);
+    console.error(" An error occurred during seeding:", error.message);
   } finally {
     // Always disconnect from DB
     await mongoose.disconnect();
-    console.log("🔌 MongoDB disconnected");
+    console.log(" MongoDB disconnected");
   }
 };
 
